@@ -18,7 +18,7 @@ pipeline {
         stage('Login & Push') {
             steps {
                 // This 'dockerhub-pass' matches the ID we created in Step 3
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-pass', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                withCredentials([usernamePassword(credentialsId: 'vivek11', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "echo $PASS | docker login -u $USER --password-stdin"
                     sh "docker push ${DOCKER_IMAGE}:${env.BUILD_ID}"
                     sh "docker push ${DOCKER_IMAGE}:latest"
